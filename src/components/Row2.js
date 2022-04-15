@@ -3,12 +3,12 @@ import "../row2.css"
 
 function Row2(props) {
   return (
-    <div>
-      <div className="box"><img></img><p>Earbuds</p></div>
-      <div className="box"><img></img><p>TVs</p></div>
-      <div className="box"><img></img><p>Consoles</p></div>
-      <div className="box"><img></img><p>Phones</p></div>
-      <div className="box"><img></img><p>Laptops</p></div>
+    <div className="row2container">
+      <div id="earbuds" className="box"><img></img><span><p>Earbuds</p></span></div>
+      <div id="tv" className="box"><img></img><span><p>TVs</p></span></div>
+      <div id="consoles" className="box"><img></img><span><p>Consoles</p></span></div>
+      <div id="phones" className="box"><img></img><span><p>Phones</p></span></div>
+      <div id="laptops" className="box"><img></img><span><p>Laptops</p></span></div>
     </div>
   )
 }
