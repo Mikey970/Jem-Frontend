@@ -1,4 +1,5 @@
 //fire
+import './Home.css';
 
 import Row from './Row';
 import Row2 from './Row2';
