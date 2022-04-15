@@ -1,0 +1,23 @@
+.order-summary-section {
+  width: 40%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.order-summary {
+  margin-top: 50px;
+  padding: 0px 50px;
+  position: fixed;
+  height: 100vh;
+}
+
+.order-summary-container {
+  width: 100%;
+  height: 100vh;
+}
+
+.prices-row {
+  display: flex;
+  justify-content: space-between;
+}
