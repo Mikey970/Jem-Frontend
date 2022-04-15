@@ -3,19 +3,19 @@
 }
 
 .box {
+  margin: 0 auto;
   margin-top: 3%;
-  display: inline-block;
   border: 2px solid black;
   height: 11vh;
-  width: 11vh;
+  width: 11vw;
   padding: 80px;
-  margin-right: 1vh;
-  margin-left: 16vh;
+
   border-radius: 1vh;
   background-image: url(https://aiwa.com.au/wp-content/uploads/2019/12/AW500.jpg);
   background-size: 100%;
 }
 .row2container {
+  display: flex;
   position: relative;
 }
 
