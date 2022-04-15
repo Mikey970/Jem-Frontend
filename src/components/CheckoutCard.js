@@ -6,9 +6,13 @@ export default function CheckoutCard() {
         image
       </div>
       <div className="checkout-card-non-image">
-        <div>Title</div>
-        <div>Price</div>
-        <div>Quantity</div>
+        <div>
+          <div>Title</div>
+          <div>Price</div>
+        </div>
+        <div>
+          <div>Quantity</div>
+        </div>
       </div>
     </div>
   )

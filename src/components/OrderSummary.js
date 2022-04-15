@@ -8,16 +8,16 @@ export default function OrderSummary() {
           <div className='reciept'>
             <div className='prices'>
               <div className='prices-row price'>
-                <h3>Original Price</h3>
-                <h3>900$</h3>
+                <h6>Original Price</h6>
+                <h6>900$</h6>
               </div>
               <div className='prices-row price'>
-                <h3>Store Pickup</h3>
-                <h3>Free</h3>
+                <h6>Store Pickup</h6>
+                <h6>Free</h6>
               </div>
               <div className='prices-row price'>
-                <h3>Estimated Sales Tax</h3>
-                <h3>90$</h3>
+                <h6>Estimated Sales Tax</h6>
+                <h6>90$</h6>
               </div>
             </div>
             <div className='prices-row total'>
