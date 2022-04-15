@@ -4,7 +4,7 @@ import ShopCards from './ShopCards.js';
 const Shop = () => {
 
     return (
-        <div className='home-div'>
+        <div className='shop-div'>
         <div className='sidebar-div'>
         <button className='tv-btn'>TVs</button>
         <button className='consoles-btn'>Consoles</button>
