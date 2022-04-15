@@ -5,6 +5,7 @@ import { BrowserRouter as Router} from "react-router-dom";
 import Home from './components/Home';
 import Nav from './components/Nav.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Cart from './components/Cart';
 
 
 function App() {
