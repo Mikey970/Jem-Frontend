@@ -10,8 +10,12 @@ export default function CheckoutCard() {
           <div>Title</div>
           <div>Price</div>
         </div>
-        <div>
+        <div className='quantity-container'>
           <div>Quantity</div>
+          <div className='incro-decro-buttons'>
+            <button className='plus'>+</button>
+            <button className='minus'>-</button>
+          </div>
         </div>
       </div>
     </div>
