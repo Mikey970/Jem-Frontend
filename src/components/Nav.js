@@ -1,19 +1,24 @@
 import './Nav.css';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const Nav = () => {
     return (
         <div className='navbar'>
         <div className='btns-div'>
         <button className='home-btn'>Home</button>
-        <button className='Shop-btn'>Shop</button>
-        <div className='dropdown'>
-        <select>
-        <option value="emil">Emil</option>
-        <option value="Random">Random</option>
-        <option value="emil">Emil</option>
-        </select>
-        </div>
         <button className='cart-btn'>Cart</button>
+        <Dropdown>
+        <Dropdown.Toggle variant='dark' id='dropdown-shop'>
+        Shop
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+        <Dropdown.Item href="/#">TVs</Dropdown.Item>
+        <Dropdown.Item href="/#">Consoles</Dropdown.Item>
+        <Dropdown.Item href="/#">Phones</Dropdown.Item>
+        <Dropdown.Item href="/#">PCs/Laptops</Dropdown.Item>
+        <Dropdown.Item href="/#">Headphones</Dropdown.Item>
+        </Dropdown.Menu>
+        </Dropdown>
         </div>
         </div>
     );
