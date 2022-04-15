@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+}
+
+.shopcards-div {
+    background-color: white;
+    width: 75vw;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
