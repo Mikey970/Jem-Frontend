@@ -5,11 +5,10 @@
 .box {
   margin: 0 auto;
   margin-top: 3%;
-  border: 2px solid black;
+
   height: 11vh;
   width: 11vw;
   padding: 80px;
-
   border-radius: 1vh;
   background-image: url(https://aiwa.com.au/wp-content/uploads/2019/12/AW500.jpg);
   background-size: 100%;
@@ -35,8 +34,10 @@
   background-image: url(https://as-images.apple.com/is/MME73_AV1?wid=1000&hei=1000&fmt=jpeg&qlt=95&.v=1632861333000);
   background-size: 100%;
 }
-
+p {
+  justify-content: left;
+  margin: 0 auto;
+}
 .row2container p {
-  margin-top: 1vh;
-  text-align: center;
+  margin-top: 4vh;
 }
