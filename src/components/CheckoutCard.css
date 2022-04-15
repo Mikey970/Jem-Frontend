@@ -1,0 +1,17 @@
+.checkout-card {
+  background-color: blueviolet;
+  height: 30%;
+  margin: 50px;
+  display: flex;
+  overflow: scroll;
+}
+
+.checkout-card-image {
+  height: 100%;
+  width: 25%;
+}
+
+.checkout-card-non-image {
+  height: 100%;
+  width: 75%;
+}
