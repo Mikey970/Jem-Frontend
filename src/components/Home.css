@@ -1,0 +1,8 @@
+* {
+    margin: 0;
+}
+
+.home-div {
+    display: flex;
+    flex-direction: column;
+}
