@@ -43,18 +43,22 @@ export default function CheckoutCard(props) {
       deleteOrder();
     }
   }
+
+  console.log(electronic, "djdfjkdfjk")
+  const { Type, Brand, Model, Image, Price, Year } = electronic;
   
   return inArray ? (
     <div className="checkout-card">
       <div className='checkout-card-image'>
-        image
+        <img src={ Image } width="75" height="75"/>
       </div>
       <div className="checkout-card-non-image">
-        <div>
-          <div>Title</div>
-          <div>Price</div>
+        <div className='checkout-card-non-image-div'>
+          <div>{Brand}</div>
+          <div>{Model}</div>
+          <div>{Price + "$"}</div>
         </div>
-        <div className='quantity-container'>
+        <div className='checkout-card-non-image-div quantity-container'>
           <div>Quantity</div>
           <div className='incro-decro-buttons'>
             <button onClick={increment} className='plus'>+</button>
