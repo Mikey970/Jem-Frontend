@@ -8,8 +8,9 @@ import { useState, useEffect } from 'react';
 import NaviBar from './NaviBar';
 import './Shop.css';
 import ShopCards from './ShopCards.js';
-function Home() {
+function Home(props) {
   
+  const { setType } = props
   let [electronics, setElectronics] = useState([]);
   
   
@@ -23,7 +24,7 @@ function Home() {
 
     return (<div className='home-div'>
         <Row />
-        <Row2 />
+        <Row2 setType={ setType }/>
         <Row3 />
         </div>);
 }

@@ -35,7 +35,7 @@ export default function OrderList(props) {
     <div className="order-list">
       {electronics.map((electronic, index) => <CheckoutCard electronic={electronic} setElectronics={setElectronics} order={order} setOrder={setOrder} setId={ setId } id={ id } key={ index }/>)}
     </div>
-  ) : (<div className='order-list'>
-      NOTHING IS IN YOUR CART
+  ) : (<div className='order-list empty-cart'>
+      <h3>NOTHING IS IN YOUR CART</h3>
   </div>)
 }

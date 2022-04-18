@@ -49,13 +49,14 @@ const ShopCard = (props) => {
       updateOrder(orderId);
     }
   }
+    console.log(electronic)
     return (
       <div className='card-div'>
-        <div className='shop-card-image-container'>
-
-        </div>
-        <div className='shop-card-title'></div>
-        <div className='shop-card-price'></div>
+        <img 
+        src={electronic.Image}
+        />
+        <div className='shop-card-title'>{electronic.Model}</div>
+        <div className='shop-card-price'>${electronic.Price}</div>
         <div className='add-to-cart'>
           <button onClick={handleAddToCard}>Add to cart</button>
         </div>
