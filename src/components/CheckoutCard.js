@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function CheckoutCard(props) {
-  const { electronic, order, setOrder, setElectronics } = props;
+  const { electronic, order, setOrder, setElectronics, hash, setHash } = props;
   const [inArray, setInArray] = useState(true);
   
   const updateOrder = async (isIncrement) => {
@@ -27,7 +27,6 @@ export default function CheckoutCard(props) {
       setElectronics(data.electronics);
     }
     console.log(filteredElectronics)
-    
   }
   const deleteOrder = async () => {
     await axios.delete(`https://jem-backend.herokuapp.com/api/orders/${order._id}`);
@@ -44,8 +43,7 @@ export default function CheckoutCard(props) {
     }
   }
 
-  console.log(electronic, "djdfjkdfjk")
-  const { Type, Brand, Model, Image, Price, Year } = electronic;
+  const { Brand, Model, Image, Price, Quantity } = electronic;
   
   return inArray ? (
     <div className="checkout-card">
@@ -59,7 +57,7 @@ export default function CheckoutCard(props) {
           <div>{Price + "$"}</div>
         </div>
         <div className='checkout-card-non-image-div quantity-container'>
-          <div>Quantity</div>
+          <div>Quantity: { Quantity || 1 }</div>
           <div className='incro-decro-buttons'>
             <button onClick={increment} className='plus'>+</button>
             <button onClick={decrement} className='minus'>-</button>
