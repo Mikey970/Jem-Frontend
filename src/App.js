@@ -1,9 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
+<<<<<<< HEAD
 import Nav from './components/NaviBar'
+=======
+import Nav from './components/NaviBar.js'
+>>>>>>> 9adbf4ff6476cb6cdea22d7690905429679c3e31
 import Cart from './components/Cart';
 import Shop from './components/Shop';
 import tvState from './components/Row2'

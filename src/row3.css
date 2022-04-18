@@ -1,23 +1,13 @@
 .row3container {
   display: flex;
-}
-.row3 {
-  height: 180px;
-  width: 450px;
-
-  margin-top: 110px;
-  border-radius: 25px;
+  justify-content: center;
 }
 
-#row3-2 {
-  margin-left: 10vh;
-  background-image: url(https://www.atajo.com.ar/b/ATAJO_Xbox_SeriesXS_Venta_Banner.jpg);
-  background-size: 140%;
-  background-repeat: no-repeat;
+.row3 img{
+    width: 40vw;
+    padding: 20px;
 }
-#row3-1 {
-  margin-left: 25vh;
-  background-image: url(https://img.poorvika.com/data/description/Accessories/Apple/Apple-airpods-3/Apple-airpods-3-banner.png);
-  background-size: 100%;
-  background-repeat: no-repeat;
+
+.row3 h4 {
+    padding: 20px;
 }

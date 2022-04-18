@@ -3,25 +3,16 @@
 }
 
 .row1 {
-  height: 20vh;
-  width: 40vw;
-  display: inline-block;
-  margin: 0 auto;
-  margin-top: 2%;
-  border-radius: 7px;
+  width: 100vw;
 }
-#row1-container {
+.row1-container {
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-#row1-2 {
-  margin-left: 5%;
-  background-image: url(https://www.ixbt.com/img/n1/news/2020/6/4/BRAVIA_PS5Banner_B-1300x333_large.png);
-  background-size: 110%;
-  background-repeat: no-repeat;
-}
-#row1-1 {
-  background-image: url(https://about.att.com/ecms/dam/snr/2021/September2021/StoryLevelBanner/09142021_Apple_STORY_LEVEL_BANNER_1600x483.jpg);
-  background-size: 100%;
-  background-repeat: no-repeat;
+.row1 img {
+    width: 50vw;
+    height: auto;
+    margin: 10px;
 }
