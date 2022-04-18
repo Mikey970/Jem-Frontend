@@ -13,6 +13,30 @@ const Shop = () => {
     getElectronics();
   }, []);
 
+  let TVarray = [];
+  for (let i = 0; i < electronics.length; i++){
+    if (electronics[i].Type === "TV") {
+     TVarray.push(electronics[i])
+   }
+  }
+  let consoleArray = []
+  for (let i = 0; i < electronics.length; i++){
+    if (electronics[i].Type === "Game Console") {
+     consoleArray.push(electronics[i])
+   }
+  }
+
+  let laptopArray = []
+  for (let i = 0; i < electronics.length; i++){
+    if (electronics[i].Type === "Laptop") {
+    laptopArray.push(electronics[i])
+   }
+  }
+  console.log(laptopArray)
+  
+
+ 
+
   return (
       <div className='shop-div'>
       <div className='sidebar-div'>
