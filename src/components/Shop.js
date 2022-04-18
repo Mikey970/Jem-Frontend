@@ -2,6 +2,7 @@ import './Shop.css';
 import ShopCards from './ShopCards.js';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 const Shop = () => {
   let [electronics, setElectronics] = useState([]);
@@ -23,20 +24,40 @@ const Shop = () => {
     getElectronics();
   }, []);
 
+  
+  
+ useEffect(() => {
+   if (window.location.href === 'http://localhost:3000/shop/earbuds') {
+    let earbudsArray = []
+ for (let i = 0; i < electronics.length; i++){
+   if (electronics[i].Type === "Earbuds") {
+   earbudsArray.push(electronics[i])
+  }
+ }
+ 
+  setElectronics(earbudsArray)
+  console.log(electronics)
+}
+
+},);
+
+
+ 
+
   let TVarray = [];
   for (let i = 0; i < electronics.length; i++){
     if (electronics[i].Type === "TV") {
      TVarray.push(electronics[i])
    }
   }
-  console.log(TVarray)
+  
   let consoleArray = []
   for (let i = 0; i < electronics.length; i++){
     if (electronics[i].Type === "Game Console") {
      consoleArray.push(electronics[i])
    }
   }
-  console.log(consoleArray)
+  
 
   let laptopArray = []
   for (let i = 0; i < electronics.length; i++){
@@ -44,18 +65,48 @@ const Shop = () => {
     laptopArray.push(electronics[i])
    }
   }
-  console.log(laptopArray)
+ 
 
-  let earbudsArray = []
-  for (let i = 0; i < electronics.length; i++){
-    if (electronics[i].Type === "Earbuds") {
-    earbudsArray.push(electronics[i])
-   }
+  
+
+  const location = useLocation()
+  console.log(location.pathname)
+
+ useEffect(() => {
+    if (location.pathname === 'http://localhost:3000/shop/tvs') {
+     
+      setElectronics(TVarray)
+      
+    console.log(electronics)
   }
-  console.log(earbudsArray)
+ 
+ });
+  
+ 
+  
+  useEffect(() => {
+    if (window.location.href === 'http://localhost:3000/shop/consoles') {
+       
+      setElectronics(consoleArray)
+     
+    console.log(electronics)
+  }
+ 
+  },);
+  
+  
+  useEffect(() => {
+    if (window.location.href === 'http://localhost:3000/shop/laptops') {
+   
+    setElectronics(laptopArray)
+    console.log(electronics)
+  }
+ 
+  }); 
 
  
 
+ 
   return (
       <div className='shop-div'>
       <div className='sidebar-div'>
