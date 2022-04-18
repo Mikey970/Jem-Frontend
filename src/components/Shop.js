@@ -4,12 +4,14 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
-const Shop = () => {
+const Shop = (props) => {
+  const { id, setId } = props;
   let [electronics, setElectronics] = useState([]);
   const [order, setOrder] = useState(null);
+  
   useEffect(() => {
     let getOrder = async () => {
-      let orderId = localStorage.getItem("orderId");
+      let orderId = id;
       if (orderId) {
         let { data } = await axios.get(`https://jem-backend.herokuapp.com/api/orders/${orderId}`);
         setOrder(data);
@@ -23,22 +25,13 @@ const Shop = () => {
     }
     getElectronics();
   }, []);
-
   
-
-  
-
- 
-
-  
-let TVarray = [];
-for (let i = 0; i < electronics.length; i++){
-  if (electronics[i].Type === "TV") {
-   TVarray.push(electronics[i])
- }
-}
-
-  
+  let TVarray = [];
+  for (let i = 0; i < electronics.length; i++){
+    if (electronics[i].Type === "TV") {
+     TVarray.push(electronics[i])
+   }
+  }
   
   let consoleArray = []
   for (let i = 0; i < electronics.length; i++){
@@ -50,10 +43,10 @@ for (let i = 0; i < electronics.length; i++){
   
  let laptopArray = []
   for (let i = 0; i < electronics.length; i++){
-   if (electronics[i].Type === "Laptop") {
-      laptopArray.push(electronics[i])
-     }
-    }
+    if (electronics[i].Type === "Laptop") {
+    laptopArray.push(electronics[i])
+   }
+  }
 
     let earbudsArray = []
     for (let i = 0; i < electronics.length; i++){
@@ -116,8 +109,6 @@ for (let i = 0; i < electronics.length; i++){
 }
 
 },);
- 
-  
 
  
 
@@ -131,7 +122,7 @@ for (let i = 0; i < electronics.length; i++){
       <button className='pcs-btn'>PCs/Laptops</button>
       <button className='headphones-btn'>Headphones</button>
       </div>
-      <ShopCards electronics={electronics} order={order} setOrder={ setOrder }/>
+      <ShopCards electronics={electronics} order={order} setOrder={ setOrder } id={ id } setId={ setId }/>
       </div>
   )
 }
