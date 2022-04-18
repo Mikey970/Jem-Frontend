@@ -24,7 +24,7 @@ const Shop = () => {
     getElectronics();
   }, []);
 
-  
+  let renderState = "";
 
   
 
@@ -43,7 +43,8 @@ for (let i = 0; i < electronics.length; i++){
   let consoleArray = []
   for (let i = 0; i < electronics.length; i++){
     if (electronics[i].Type === "Game Console") {
-     consoleArray.push(electronics[i])
+      consoleArray.push(electronics[i])
+      
    }
   }
 
@@ -59,6 +60,7 @@ for (let i = 0; i < electronics.length; i++){
     for (let i = 0; i < electronics.length; i++){
       if (electronics[i].Type === "Earbuds") {
       
+        
         console.log(window.location)
         
         
@@ -74,7 +76,7 @@ for (let i = 0; i < electronics.length; i++){
  useEffect(() => {
     if (window.location.href === 'http://localhost:3000/shop/tvs') {
      
-      //setElectronics(TVarray)
+      setElectronics(TVarray)
      
     console.log(electronics)
   }
@@ -104,18 +106,18 @@ for (let i = 0; i < electronics.length; i++){
         console.log(electronics)
       
     }
-  },[window.location.href]);
+  },[]);
   
 
- useEffect(() => {
-  if (window.location.href === 'http://localhost:3000/shop/earbuds') {
-
-
- setElectronics(earbudsArray)
- console.log(electronics)
-}
-
-},);
+  useEffect(() => {
+    if (window.location.href === 'http://localhost:3000/shop/earbuds') {
+  
+  
+   setElectronics(earbudsArray)
+   console.log(electronics)
+  }
+  
+  },);
  
   
 
