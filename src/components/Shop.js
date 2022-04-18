@@ -25,13 +25,18 @@ const Shop = () => {
   }, []);
 
   
+
   
  useEffect(() => {
    if (window.location.href === 'http://localhost:3000/shop/earbuds') {
     let earbudsArray = []
  for (let i = 0; i < electronics.length; i++){
    if (electronics[i].Type === "Earbuds") {
-   earbudsArray.push(electronics[i])
+   
+     console.log(window.location)
+     
+     
+     
   }
  }
  
@@ -41,15 +46,17 @@ const Shop = () => {
 
 },);
 
-
  
 
-  let TVarray = [];
-  for (let i = 0; i < electronics.length; i++){
-    if (electronics[i].Type === "TV") {
-     TVarray.push(electronics[i])
-   }
-  }
+  
+let TVarray = [];
+for (let i = 0; i < electronics.length; i++){
+  if (electronics[i].Type === "TV") {
+   TVarray.push(electronics[i])
+ }
+}
+localStorage.setItem("tvs", setElectronics(TVarray))
+  
   
   let consoleArray = []
   for (let i = 0; i < electronics.length; i++){
@@ -58,14 +65,14 @@ const Shop = () => {
    }
   }
   
+      let laptopArray = []
+      for (let i = 0; i < electronics.length; i++){
+        if (electronics[i].Type === "Laptop") {
+        laptopArray.push(electronics[i])
+       }
+      }
 
-  let laptopArray = []
-  for (let i = 0; i < electronics.length; i++){
-    if (electronics[i].Type === "Laptop") {
-    laptopArray.push(electronics[i])
-   }
-  }
- 
+  
 
   
 
@@ -73,10 +80,10 @@ const Shop = () => {
   console.log(location.pathname)
 
  useEffect(() => {
-    if (location.pathname === 'http://localhost:3000/shop/tvs') {
+    if (window.location.href === 'http://localhost:3000/shop/tvs') {
      
-      setElectronics(TVarray)
-      
+      //setElectronics(TVarray)
+      localStorage.getItem("tvs")
     console.log(electronics)
   }
  
@@ -89,20 +96,23 @@ const Shop = () => {
        
       setElectronics(consoleArray)
      
-    console.log(electronics)
-  }
+      console.log(electronics)
+    }
+    });
  
-  },);
+
   
   
+
   useEffect(() => {
     if (window.location.href === 'http://localhost:3000/shop/laptops') {
-   
-    setElectronics(laptopArray)
-    console.log(electronics)
-  }
+     
+      setElectronics(laptopArray)
+      console.log(electronics)
+    }
+    });
  
-  }); 
+  
 
  
 
