@@ -4,9 +4,15 @@
 
 .navbar {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: row;
+  justify-content: start;
   background-color: black;
   padding: 15px 0;
+  color: white;
+}
+
+.custom-link {
+    color: white;
 }
 
 .btns-div {
@@ -24,3 +30,4 @@ button {
 button:hover {
   color: grey;
 }
+
