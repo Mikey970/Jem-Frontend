@@ -1,11 +1,13 @@
+import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
-import Nav from './components/NaviBar.js'
+import Nav from './components/NaviBar'
 import Cart from './components/Cart';
 import Shop from './components/Shop';
 import { useState, useEffect, useId } from 'react';
+
 
 
 function App() {

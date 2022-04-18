@@ -5,9 +5,15 @@ import Row2 from './Row2';
 import Row3 from './Row3';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-
+import NaviBar from './NaviBar';
+import './Shop.css';
+import ShopCards from './ShopCards.js';
 function Home() {
-    const [electronics, setElectronics] = useState([]);
+  
+  let [electronics, setElectronics] = useState([]);
+  
+  
+
 
     useEffect(() => {
         fetch('http://localhost:3000/api/electronics')
