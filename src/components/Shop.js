@@ -5,9 +5,19 @@ import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
 const Shop = (props) => {
-  const { id, setId } = props;
+  const { id, setId, setType, type } = props;
   let [electronics, setElectronics] = useState([]);
   const [order, setOrder] = useState(null);
+
+  let getElectronics = async () => {
+    let { data } = await axios.get("https://jem-backend.herokuapp.com/api/electronics");
+
+    let filteredData = data.filter((electronic) => {
+      return electronic.Type === type
+    })
+
+    setElectronics(filteredData);
+  }
   
   useEffect(() => {
     let getOrder = async () => {
@@ -19,12 +29,9 @@ const Shop = (props) => {
 
     }
     getOrder()
-    let getElectronics = async () => {
-      let { data } = await axios.get("https://jem-backend.herokuapp.com/api/electronics");
-      setElectronics(data);
-    }
     getElectronics();
   }, []);
+<<<<<<< HEAD
   
   let TVarray = [];
   for (let i = 0; i < electronics.length; i++){
@@ -94,6 +101,8 @@ const Shop = (props) => {
 }
 
 },);
+=======
+>>>>>>> ebccc7b1b36c5b5019c2b7450a4a269a0301531d
  
   return (
       <div className='shop-div'>
