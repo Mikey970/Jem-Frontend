@@ -104,7 +104,7 @@ for (let i = 0; i < electronics.length; i++){
         console.log(electronics)
       
     }
-  });
+  },[window.location.href]);
   
 
  useEffect(() => {
