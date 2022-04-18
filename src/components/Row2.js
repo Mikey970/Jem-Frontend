@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Link, Route, Switch, useParams} from 'react-rou
 import { Navigate } from 'react-router';
 
 function Row2(props) {
+  const { setType } = props;
   const [TVimg, setTVimg] = useState("");
   /*useEffect(() => {
     fetch("https://jem-backend.herokuapp.com/api/electronics")
@@ -13,19 +14,25 @@ function Row2(props) {
     .then(data => setTVimg(data[0].Image))
     });
     */
+  
+  const handleClick = (event) => {
+    console.log("hit")
+    setType(event.target.name);
+  }
     
   
    
   return (
     <div className="row2container">
 
-      <div id="earbuds" onClick={event=>window.location.href="http://localhost:3000/shop/earbuds"} className="box"><img></img><span><p>Earbuds</p></span></div>
-      <div id="tv" onClick={event=> window.location.href= "/shop/tvs"} className="box"><img></img><span><p>TVs</p></span></div>
-      <div id="consoles" onClick={event=> window.location.href='/shop/consoles'} className="box"><img></img><span><p>Consoles</p></span></div>
-      <div id="phones" onClick={ event=> window.location.href='/shop/phones'}className="box"><img></img><span><p>Phones</p></span></div>
-      <div id="laptops" onClick={event=> window.location.href='/shop/laptops' }className="box"><img></img><span><p>Laptops</p></span></div>
-
+      <Link to="/shop"><div id="earbuds"  className="box"><img name="Earbuds" onClick={handleClick}></img><span><p>Earbuds</p></span></div></Link>
+      <Link to="/shop"><div id="tv" className="box"><img name="TV" onClick={handleClick}></img><span><p>TVs</p></span></div></Link>
+      <Link to="/shop"><div id="consoles" className="box"><img name="Game Console" onClick={handleClick}></img><span><p>Consoles</p></span></div></Link>
+      <Link to="/shop"><div id="phones" className="box"><img name="Phone" onClick={handleClick}></img><span><p>Phones</p></span></div></Link>
+      <Link to="/shop"><div id="laptops" className="box"><img name="Laptop" onClick={handleClick}></img><span><p>Laptops</p></span></div></Link>
+      { /* 
       <div 
+        
       id="earbuds" 
       onClick={event=>  <Navigate to="/shop/earbuds"/>} 
       className="box">
@@ -76,7 +83,7 @@ function Row2(props) {
       />
       <p>Laptops</p>
       </div>
-
+      */}
     </div>
   )
 }
