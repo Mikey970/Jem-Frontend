@@ -31,7 +31,6 @@ const Shop = (props) => {
     getOrder()
     getElectronics();
   }, []);
-<<<<<<< HEAD
   
   let TVarray = [];
   for (let i = 0; i < electronics.length; i++){
@@ -101,8 +100,6 @@ const Shop = (props) => {
 }
 
 },);
-=======
->>>>>>> ebccc7b1b36c5b5019c2b7450a4a269a0301531d
  
   return (
       <div className='shop-div'>
