@@ -2,42 +2,17 @@
   margin: 0;
 }
 
-.box {
-  margin: 0 auto;
-  margin-top: 3%;
-
-  height: 11vh;
-  width: 11vw;
-  padding: 80px;
-  border-radius: 1vh;
-  background-image: url(https://aiwa.com.au/wp-content/uploads/2019/12/AW500.jpg);
-  background-size: 100%;
+.box p {
+    margin: 0;
 }
+
+.box img {
+    margin: 0;
+    height: 20vw;
+    width: 20vw;
+}
+
 .row2container {
   display: flex;
-  position: relative;
 }
 
-#laptops {
-  background-image: url(https://as-images.apple.com/is/refurb-macbook-air-space-gray-m1-202010?wid=1000&hei=1000&fmt=jpeg&qlt=95&.v=1634145627000);
-  background-size: 100%;
-}
-#consoles {
-  background-image: url(https://manuals.plus/wp-content/uploads/2021/10/SONY-PS5-PlayStation-5.png);
-  background-size: 100%;
-}
-#phones {
-  background-image: url(https://www.nfm.com/dw/image/v2/BDFM_PRD/on/demandware.static/-/Sites-nfm-master-catalog/default/dw1d5c6fbd/images/061/23/61233656-1.jpg?sw=1000&sh=1000&sm=fit);
-  background-size: 100%;
-}
-#earbuds {
-  background-image: url(https://as-images.apple.com/is/MME73_AV1?wid=1000&hei=1000&fmt=jpeg&qlt=95&.v=1632861333000);
-  background-size: 100%;
-}
-p {
-  justify-content: left;
-  margin: 0 auto;
-}
-.row2container p {
-  margin-top: 4vh;
-}
