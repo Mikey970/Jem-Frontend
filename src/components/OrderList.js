@@ -1,11 +1,11 @@
 import './OrderList.css';
 import CheckoutCard from './CheckoutCard';
-export default function OrderList() {
+export default function OrderList(props) {
+  const { electronics, order, setOrder, setElectronics, id, setId } = props;
+  // console.log(electronics)
   return (
     <div className="order-list">
-      <CheckoutCard/>
-      <CheckoutCard/>
-      <CheckoutCard/>
+      {electronics.map((electronic, index) => <CheckoutCard electronic={electronic} setElectronics={setElectronics} order={order} setOrder={setOrder} setId={ setId } id={ id } key={ index }/>)}
     </div>
   )
 }
