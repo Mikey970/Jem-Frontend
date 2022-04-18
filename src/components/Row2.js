@@ -19,11 +19,11 @@ function Row2(props) {
   return (
     <div className="row2container">
 
-      <div id="earbuds" onClick={event=>window.location.href="http://localhost:3000/shop/earbuds"} className="box"><img></img><span><p>Earbuds</p></span></div>
-      <div id="tv" onClick={event=> window.location.href= "/shop/tvs"} className="box"><img></img><span><p>TVs</p></span></div>
-      <div id="consoles" onClick={event=> window.location.href='/shop/consoles'} className="box"><img></img><span><p>Consoles</p></span></div>
-      <div id="phones" onClick={ event=> window.location.href='/shop/phones'}className="box"><img></img><span><p>Phones</p></span></div>
-      <div id="laptops" onClick={event=> window.location.href='/shop/laptops' }className="box"><img></img><span><p>Laptops</p></span></div>
+      <div id="earbuds" value="earbuds" onClick={event=>window.location.href="http://localhost:3000/shop/earbuds"} className="box"><img></img><span><p>Earbuds</p></span></div>
+      <div id="tv" value="tv" onClick={event=> window.location.href= "/shop/tvs"} className="box"><img></img><span><p>TVs</p></span></div>
+      <div id="consoles" value="consoles" onClick={event=> window.location.href='/shop/consoles'} className="box"><img></img><span><p>Consoles</p></span></div>
+      <div id="phones" value="phones" onClick={ event=> window.location.href='/shop/phones'}className="box"><img></img><span><p>Phones</p></span></div>
+      <div id="laptops" value="laptops" onClick={event=> window.location.href='/shop/laptops' }className="box"><img></img><span><p>Laptops</p></span></div>
 
       <div 
       id="earbuds" 
