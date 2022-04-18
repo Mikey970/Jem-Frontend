@@ -3,21 +3,43 @@
 }
 
 .card-div {
-  border: solid black;
-  height: 30vw;
+  border: solid gainsboro;
+  height: auto;
   width: 30vw;
   margin: 10px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-.shop-card-image-container {
-  height: 50%;
+.card-div:hover img {
+    opacity: 0.3;
 }
+
+.card-div:hover .add-to-cart {
+    opacity: 1;
+}
+
+.add-to-cart {
+    position: absolute;
+    transition: .5s ease;
+    opacity: 0;
+}
+
+
+img {
+    max-width: 23vw;
+    max-height: 30vw;
+    margin: 15px;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
 .shop-card-title {
   height: 10%;
 }
 .shop-card-price {
-  height: 20%;
-}
-.add-to-cart {
   height: 20%;
 }

@@ -51,15 +51,9 @@ const Shop = (props) => {
     let earbudsArray = []
     for (let i = 0; i < electronics.length; i++){
       if (electronics[i].Type === "Earbuds") {
-      
         console.log(window.location)
-        
-        
-        
      }
     }
-
-  
 
   const location = useLocation()
   console.log(location.pathname)
@@ -74,8 +68,6 @@ const Shop = (props) => {
  
  });
   
- 
-  
   useEffect(() => {
     if (window.location.href === 'http://localhost:3000/shop/consoles') {
        
@@ -84,34 +76,24 @@ const Shop = (props) => {
       console.log(electronics)
     }
     });
- 
-
-  
-  
 
   useEffect(() => {
     if (window.location.href === 'http://localhost:3000/shop/laptops') {
      
-      
         setElectronics(laptopArray)
         console.log(electronics)
       
     }
   },[window.location.href]);
-  
 
  useEffect(() => {
   if (window.location.href === 'http://localhost:3000/shop/earbuds') {
-
 
  setElectronics(earbudsArray)
  console.log(electronics)
 }
 
 },);
-
- 
-
  
   return (
       <div className='shop-div'>
