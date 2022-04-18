@@ -27,24 +27,6 @@ const Shop = () => {
   
 
   
- useEffect(() => {
-   if (window.location.href === 'http://localhost:3000/shop/earbuds') {
-    let earbudsArray = []
- for (let i = 0; i < electronics.length; i++){
-   if (electronics[i].Type === "Earbuds") {
-   
-     console.log(window.location)
-     
-     
-     
-  }
- }
- 
-  setElectronics(earbudsArray)
-  console.log(electronics)
-}
-
-},);
 
  
 
@@ -55,7 +37,7 @@ for (let i = 0; i < electronics.length; i++){
    TVarray.push(electronics[i])
  }
 }
-localStorage.setItem("tvs", setElectronics(TVarray))
+
   
   
   let consoleArray = []
@@ -64,15 +46,25 @@ localStorage.setItem("tvs", setElectronics(TVarray))
      consoleArray.push(electronics[i])
    }
   }
-  
-      let laptopArray = []
-      for (let i = 0; i < electronics.length; i++){
-        if (electronics[i].Type === "Laptop") {
-        laptopArray.push(electronics[i])
-       }
-      }
 
   
+ let laptopArray = []
+  for (let i = 0; i < electronics.length; i++){
+   if (electronics[i].Type === "Laptop") {
+      laptopArray.push(electronics[i])
+     }
+    }
+
+    let earbudsArray = []
+    for (let i = 0; i < electronics.length; i++){
+      if (electronics[i].Type === "Earbuds") {
+      
+        console.log(window.location)
+        
+        
+        
+     }
+    }
 
   
 
@@ -83,7 +75,7 @@ localStorage.setItem("tvs", setElectronics(TVarray))
     if (window.location.href === 'http://localhost:3000/shop/tvs') {
      
       //setElectronics(TVarray)
-      localStorage.getItem("tvs")
+     
     console.log(electronics)
   }
  
@@ -107,10 +99,23 @@ localStorage.setItem("tvs", setElectronics(TVarray))
   useEffect(() => {
     if (window.location.href === 'http://localhost:3000/shop/laptops') {
      
-      setElectronics(laptopArray)
-      console.log(electronics)
+      
+        setElectronics(laptopArray)
+        console.log(electronics)
+      
     }
-    });
+  });
+  
+
+ useEffect(() => {
+  if (window.location.href === 'http://localhost:3000/shop/earbuds') {
+
+
+ setElectronics(earbudsArray)
+ console.log(electronics)
+}
+
+},);
  
   
 

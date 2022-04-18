@@ -2,6 +2,9 @@
 import "../row2.css"
 import { useEffect, useState } from 'react'
 import axios from "axios";
+import {BrowserRouter as Router, Link, Route, Switch, useParams} from 'react-router-dom'
+import { Navigate } from 'react-router';
+
 function Row2(props) {
   const [TVimg, setTVimg] = useState("");
   /*useEffect(() => {
@@ -12,22 +15,22 @@ function Row2(props) {
     */
     
   
-    
+   
   return (
     <div className="row2container">
-<<<<<<< HEAD
-      <div id="earbuds" onClick={event=> window.location.href='/shop/earbuds'} className="box"><img></img><span><p>Earbuds</p></span></div>
+
+      <div id="earbuds" onClick={event=>window.location.href="http://localhost:3000/shop/earbuds"} className="box"><img></img><span><p>Earbuds</p></span></div>
       <div id="tv" onClick={event=> window.location.href= "/shop/tvs"} className="box"><img></img><span><p>TVs</p></span></div>
       <div id="consoles" onClick={event=> window.location.href='/shop/consoles'} className="box"><img></img><span><p>Consoles</p></span></div>
       <div id="phones" onClick={ event=> window.location.href='/shop/phones'}className="box"><img></img><span><p>Phones</p></span></div>
       <div id="laptops" onClick={event=> window.location.href='/shop/laptops' }className="box"><img></img><span><p>Laptops</p></span></div>
-=======
+
       <div 
       id="earbuds" 
-      onClick={event=> window.location.href='/shop/earbuds'} 
+      onClick={event=>  <Navigate to="/shop/earbuds"/>} 
       className="box">
       <img
-      src="https://as-images.apple.com/is/MME73_AV1?wid=1000&hei=1000&fmt=jpeg&qlt=95&.v=1632861333000"
+      src="https://as-images.apple.com/is/MME73_AV1?wid=1000hei=1000fmt=jpegqlt=95.v=1632861333000"
       />
       <p>Earbuds</p>
       </div>
@@ -63,14 +66,17 @@ function Row2(props) {
      
       <div 
       id="laptops" 
-      onClick={event=> window.location.href='/shop/laptops' } 
+        onClick={event => {
+          
+          window.location.replace('/shop/laptops')
+        }} 
       className="box">
       <img
       src="https://as-images.apple.com/is/refurb-macbook-air-space-gray-m1-202010?wid=1000&hei=1000&fmt=jpeg&qlt=95&.v=1634145627000"
       />
       <p>Laptops</p>
       </div>
->>>>>>> 9adbf4ff6476cb6cdea22d7690905429679c3e31
+
     </div>
   )
 }
