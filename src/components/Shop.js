@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
 const Shop = (props) => {
-  const { id, setId, setType, type } = props;
+  const { id, setId, setType, type, electronicInOrder, setElectronicInOrder } = props;
   let [electronics, setElectronics] = useState([]);
   const [order, setOrder] = useState(null);
 
@@ -111,7 +111,7 @@ const Shop = (props) => {
       <button className='pcs-btn'>PCs/Laptops</button>
       <button className='headphones-btn'>Headphones</button>
       </div>
-      <ShopCards electronics={electronics} order={order} setOrder={ setOrder } id={ id } setId={ setId }/>
+      <ShopCards electronicInOrder={electronicInOrder} setElectronicInOrder={ setElectronicInOrder } electronics={electronics} order={order} setOrder={ setOrder } id={ id } setId={ setId }/>
       </div>
   )
 }

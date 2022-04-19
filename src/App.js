@@ -13,17 +13,18 @@ import { useState, useEffect, useId } from 'react';
 function App() {
   const [id, setId] = useState("");
   const [type, setType] = useState("");
+  const [electronicInOrder, setElectronicInOrder] = useState("");
   useEffect(() => {
     setId(localStorage.getItem("orderId"));
   })
-  console.log(id, "id")
+  
   return (
     <div className="App">
       <Nav />
       <Routes>
         <Route path="/" element={<Home setType={ setType }/>}/>
-        <Route path="/cart" element={<Cart id={ id } setId={ setId } />} />
-        <Route path="/shop" element={<Shop id={id} setId={setId} type={ type} setType={ setType }/>} />
+        <Route path="/cart" element={<Cart electronicInOrder={electronicInOrder} setElectronicInOrder={ setElectronicInOrder } id={ id } setId={ setId } />} />
+        <Route path="/shop" element={<Shop electronicInOrder={electronicInOrder} setElectronicInOrder={ setElectronicInOrder } id={id} setId={setId} type={ type} setType={ setType }/>} />
         <Route path="/shop/tv" element={<Shop id={ id } setId={ setId }/>} />
         <Route path="/shop/earbuds" element={<Shop id={ id } setId={ setId }/>} />
         <Route path="/shop/laptops" element={<Shop id={ id } setId={ setId }/>} />
