@@ -36,3 +36,19 @@ npm start
 ```
 git checkout -b <branch name>
 ```
+
+6. Track Commit and Push to the your Branch 
+Stage Files for Commit
+```
+git add <file>
+```
+
+Commit
+```
+git commit 
+```
+
+Push to Branch 
+```
+git push <remote> <branch>
+```
