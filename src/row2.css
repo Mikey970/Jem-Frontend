@@ -8,8 +8,7 @@
 
 .box img {
     margin: 0;
-    height: 20vw;
-    width: 20vw;
+    max-width: 20vw;
 }
 
 .row2container {
