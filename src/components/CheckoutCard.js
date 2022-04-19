@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function CheckoutCard(props) {
-  const { electronic, order, setOrder, setElectronics, hash, setHash } = props;
+  const { electronic, order, setOrder, setElectronics } = props;
   const [inArray, setInArray] = useState(true);
   
   const updateOrder = async (isIncrement) => {
