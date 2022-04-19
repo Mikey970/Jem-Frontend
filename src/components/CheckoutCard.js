@@ -3,62 +3,98 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function CheckoutCard(props) {
-  const { electronic, order, setOrder, setElectronics, electronicInOrder, setElectronicInOrder } = props;
+  const { order, setOrder, setElectronics, electronicInOrder, setElectronicInOrder } = props;
   const [inArray, setInArray] = useState(true);
-  
-  // const updateOrder = async (isIncrement) => {
-  //   let count = 0;
-  //   console.log(electronic._id, !isIncrement)
-  //   const filteredElectronics = !isIncrement ? order.electronics.filter((e) => {
-  //     if (e._id === electronic._id) {
-  //       count++;
-  //       if (count === 1) return false;
-  //     }
-  //     return true;
-  //   }) : [...order.electronics, electronic];
-  //   if (order.electronics.length === filteredElectronics.length) {
-  //     setInArray(false);
-  //   } else {
-  //     const newOrder = { ...order, total: isIncrement ? order.total + electronic.Price : order.total - electronic.Price };
-  //     newOrder.electronics = filteredElectronics;
-  //     let { data } = await axios.put(`https://jem-backend.herokuapp.com/api/orders/${order._id}`, newOrder);
-  //     setOrder(data);
-  //     console.log(data, filteredElectronics.length)
-  //     setElectronics(data.electronics);
-  //   }
-  //   console.log(filteredElectronics)
-  // }
-  // const deleteOrder = async () => {
-  //   await axios.delete(`https://jem-backend.herokuapp.com/api/orders/${order._id}`);
-  //   localStorage.removeItem('orderId');
-  // }
-  // const increment = () => {
-  //   updateOrder(true);
-  // }
-  
-  // const decrement = () => {
-  //   updateOrder(false);
-  //   if (order.total <= 0) {
-  //     deleteOrder();
-  //   }
-  // }
+  const [electronic, setElectronic] = useState({});
+  const [quantity, setQuantity] = useState(1);
 
-  const increment = () => {
-
+  const getElectronic = async () => {
+    let { data } = await axios.get("https://jem-backend.herokuapp.com/api/electronics/" + electronicInOrder.electronicId);
+    setElectronic(data)
   }
 
-  const decrement = () => {
-    
+  const getElectronicInOrder = async () => {
+    const { data } =
+      await axios.get("https://jem-backend.herokuapp.com/api/orderElectronics/" + order._id + "/" + electronic._id);
+    getElectronicInOrder(data);
   }
 
-  // console.log(electronic)
   useEffect(() => {
-    console.log(electronic)
+    getElectronic();
+    getElectronicInOrder();
   }, [])
 
-  const { Brand, Model, Image, Price, Quantity } = electronic;
+  const increment = async () => {
+    let { data } =
+      await axios.put("https://jem-backend.herokuapp.com/api/orderElectronics/" + order._id + "/" + electronic._id, {
+        ...electronicInOrder,
+        quantity: electronicInOrder.quantity + 1
+      });
+    let array = order.electronics;
+    let found = array.find((e) => e.electronicId === electronicInOrder.electronicId);
+    console.log(found, "found")
+    let count = 0;
+    array = array.map((e) => {
+      if (!count && e.electronicId === electronicInOrder.electronicId) {
+        e.quantity += 1
+        count++;
+      }
+      return e
+    })
+    let counter = 0
+    let { data: newOrder } = await axios.put("https://jem-backend.herokuapp.com/api/orders/" + order._id, {
+        ...order,
+      electronics: array.filter((e => {
+        if (e.quantity > 0) {
+          return true;
+        }
+        counter++;
+        return false;
+      }))
+    });
+    if(counter) setOrder(newOrder);
+    setElectronicInOrder(data);
+  }
+
+  const decrement = async () => {
+    let { data } =
+      await axios.put("https://jem-backend.herokuapp.com/api/orderElectronics/" + order._id + "/" + electronic._id, {
+        ...electronicInOrder,
+        quantity: electronicInOrder.quantity - 1
+      });
+    let array = order.electronics;
+    let found = array.find((e) => e.electronicId === electronicInOrder.electronicId);
+    console.log(found, "found")
+    let count = 0;
+    array = array.map((e) => {
+      if (!count && e.electronicId === electronicInOrder.electronicId) {
+        e.quantity -= 1
+        count++;
+      }
+      return e
+    })
+    let counter = 0
+    let { data: newOrder } = await axios.put("https://jem-backend.herokuapp.com/api/orders/" + order._id, {
+        ...order,
+      electronics: array.filter((e => {
+        if (e.quantity > 0) {
+          return true;
+        }
+        counter++;
+        return false;
+      }))
+    });
+    if (counter) {
+      setOrder(newOrder);
+      window.location.reload();
+    }
+    setElectronicInOrder(data);
+  }
+
+  const { Brand, Model, Image, Price } = electronic;
+  const { quantity: Quantity } = electronicInOrder
   
-  return inArray && electronic ? (
+  return inArray && electronic && Quantity >= 0 ? (
     <div className="checkout-card">
       <div className='checkout-card-image'>
         <img src={ Image } width="75" height="75"/>
