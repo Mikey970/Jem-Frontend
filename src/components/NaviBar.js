@@ -2,18 +2,21 @@ import './Nav.css';
 import { Container, Navbar, NavDropdown, Nav, Button, NavLink } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const NaviBar = () => {
+const NaviBar = (props) => {
+    let { setType, type, electronics } = props;
+
+    
     return (
         <Navbar expand='sm' sticky="top" variant="dark">
         <Nav className="me-auto">
         <NavLink href="/">Home</NavLink>
         <NavLink href="/cart">Cart</NavLink>
         <NavDropdown title="Shop">
-        <NavDropdown.Item href="/shop/tv">TVs</NavDropdown.Item>
-        <NavDropdown.Item href="/shop/consoles">Consoles</NavDropdown.Item>
-        <NavDropdown.Item href="/shop/phones">Phones</NavDropdown.Item>
-        <NavDropdown.Item href="/shop/laptops">PCs/Laptops</NavDropdown.Item>
-        <NavDropdown.Item href="/shop/earbuds">Earbuds</NavDropdown.Item>
+        <Link className="drop-link" to="/shop/tv">TVs</Link>
+        <Link className="drop-link" to="/shop/consoles">Consoles</Link>
+        <Link className="drop-link" to="/shop/phones">Phones</Link>
+        <Link className="drop-link" to="/shop/laptops">PCs/Laptops</Link>
+        <Link className="drop-link" to="/shop/earbuds">Earbuds</Link>
         </NavDropdown>
         </Nav>
         </Navbar>
