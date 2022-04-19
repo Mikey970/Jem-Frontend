@@ -65,7 +65,7 @@ const Shop = (props) => {
   return (
       <div className='shop-div'>
       <div className='sidebar-div'>
-      <Link to="/shop/tv" className='tv-sb'>TVs</Link>
+      <button className='tv-sb'>TVs</button>
       <button className='consoles-sb'>Consoles</button>
       <button className='phones-sb'>Phones</button>
       <button className='pcs-sb'>PCs/Laptops</button>
