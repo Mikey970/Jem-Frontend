@@ -65,11 +65,11 @@ const Shop = (props) => {
   return (
       <div className='shop-div'>
       <div className='sidebar-div'>
-      <button name="TV" className='tv-sb TV'>TVs</button>
-      <button className='consoles-sb'>Consoles</button>
-      <button className='phones-sb'>Phones</button>
-      <button className='pcs-sb'>PCs/Laptops</button>
-      <button className='headphones-sb'>Headphones</button>
+      <Link to="/shop/tv" name="TV" className='sidebar-link'>TVs</Link>
+      <Link to="/shop/consoles" name="Game Console" className='sidebar-link'>Consoles</Link>
+      <Link to="/shop/phones" name="Phone" className='sidebar-link'>Phones</Link>
+      <Link to="/shop/laptops" name="Laptop" className='sidebar-link'>PCs/Laptops</Link>
+      <Link to="/shop/earbuds" name="Earbuds" className='sidebar-link'>Headphones</Link>
       </div>
       <ShopCards electronics={electronics} type={type} setType={setType} order={order} setOrder={ setOrder } id={ id } setId={ setId }/>
       </div>
