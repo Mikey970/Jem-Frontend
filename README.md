@@ -21,14 +21,17 @@ You can contribute to our projec too! Go through the following steps to get your
 ```
 git clone https://github.com/Mikey970/Jem-Frontend.git
 ```
+
 3. Download any dependencies
 ```
 npm i 
 ```
+
 4. Run the server locally 
 ```
 npm start
 ```
+
 5. Create your own Branch 
 ```
 git checkout -b <branch name>
