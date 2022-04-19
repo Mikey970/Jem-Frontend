@@ -3,87 +3,89 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const ShopCard = (props) => {
-  const { electronic, order, setOrder, setId, id } = props;
-  const createOrder = async () => {
-    let newOrder = {
-      electronics: [electronic],
-      total: electronic.Price
+  const { electronic, order, setOrder, setId, id, electronicInOrder, setElectronicInOrder } = props;
+
+  const getElectronicInOrder = async () => {
+    let { data } =
+      await axios.get(
+        `https://jem-backend.herokuapp.com/api/orderElectronics/${id}/${electronic._id}`
+      )
+    if (!data && id) {
+      let { data: data2 } =
+        await axios.post(
+          `https://jem-backend.herokuapp.com/api/orderElectronics/`,
+          {
+            orderId: id,
+            electronicId: electronic._id,
+            quantity: 0
+          }
+        )
+      setElectronicInOrder(data2)
     }
-    console.log("create")
-    let { data } = await axios.post("https://jem-backend.herokuapp.com/api/orders", newOrder)
-    let { _id } = data;
-    localStorage.setItem("orderId", _id);
-    setId(_id);
+  }
+
+
+  const createOrder = async () => {
+    let { data } = await axios.post("https://jem-backend.herokuapp.com/api/orders/", {
+      electronics: [],
+      total: 0
+    })
+    console.log(data, "data")
+    if (!id) {
+      setId(data._id);
+      setOrder(data);
+      localStorage.setItem("orderId", data._id)
+    }
+  }
+
+  const getOrder = async () => {
+    let { data } = await axios.get("https://jem-backend.herokuapp.com/api/orders/" + id)
     setOrder(data);
   }
 
-  const getOrder = async (id) => {
-    let orderId = id;
-    if (orderId) {
-      let { data } = await axios.get(`https://jem-backend.herokuapp.com/api/orders/${orderId}`);
-      setOrder(data);
-    }
-  }
+  // may have to go one above to parent and order.electronics it
 
   useEffect(() => {
-    getOrder(id)
+    getElectronicInOrder()
+    if (!id) createOrder();
+    if (!order) {
+      getOrder();
+    }
   }, [])
 
-  const updateOrder = async (id) => { // incorperate orderElectronics
-    getOrder(id);
-    if (order) {
-      let orderElectronic =
-        await axios.get(
-          `https://jem-backend.herokuapp.com/api/orderElectronics/${order._id}/${electronic._id}`
-        )
-      let orderElectronicData = orderElectronic.data;
-      if (!orderElectronicData) {
-        let newOrderElectronic = await axios.post(
-          `https://jem-backend.herokuapp.com/api/orderElectronics/`, {
-          orderId: order._id,
-          electronicId: electronic._id,
-          quantity: 1
-        })
-        await axios.put(`https://jem-backend.herokuapp.com/api/orders/${order._id}`, {
-          ...order,
-          electronics: [newOrderElectronic.data]
-        })
-      } else {
-        console.log("puttung")
-        let newOrderElectronic = await axios.put(
-          `https://jem-backend.herokuapp.com/api/orderElectronics/${order._id}/${electronic._id}`, {
-          ...orderElectronicData, quantity: (orderElectronicData.quantity || 0) + 1
-        })
-        let orderElectronicId = newOrderElectronic.data._id;
-        // await axios.put(
-        //   `https://jem-backend.herokuapp.com/api/orders/${order._id}`, {
-        //   ...orderElectronic, quantity: orderElectronic.quantity + 1
-        // })
-        console.log(newOrderElectronic, orderElectronicId, "putted")
-        // await axios.put(`https://jem-backend.herokuapp.com/api/orderElectronics/${order._id}`, {
-        //   ...order,
-        //   electronics: [newOrderElectronic]
-        // })
-      }
-      let newOrder = { ...order, total: order.total + electronic.Price };
-      console.log([...newOrder.electronics, electronic], "new elec")
-      newOrder.electronics = [...newOrder.electronics, electronic];
-      let { data } = await axios.put(`https://jem-backend.herokuapp.com/api/orders/${id}`, newOrder)
-      console.log(data, "data")
-      setOrder(data)
+  const updateOrder = async () => {
+    console.log('in update', order)
+    if (!order) createOrder();
+    // you have orders and electronics
+    let { data } =
+      await axios.get("https://jem-backend.herokuapp.com/api/orderElectronics/" + id + "/" + electronic._id);
+    if (!order) return;
+    let foundNode = order.electronics.filter((e) => e).find((e) => data._id === e._id);
+    if (!foundNode) {
+      console.log("in if")
+      console.log([...order.electronics, data].filter((e) => e))
+      let { data: changedOrder} = await axios.put("https://jem-backend.herokuapp.com/api/orders/" + id, {
+        ...order,
+        electronics: [...order.electronics, {...data, quantity: (data.quantity || 0) + 1}].filter((e) => e),
+        total: (order.total || 0) + electronic.Price
+      })
+      setOrder(changedOrder);
+    } else { 
+      console.log("in else")
+      let { data: changedOrderElectronic } = await axios.put("https://jem-backend.herokuapp.com/api/orderElectronics/" + id + "/" + electronic._id, {
+        ...data,
+        quantity: data.quantity + 1
+      })
+      const { data: newOrderUpdateQuantity } = await axios.put("https://jem-backend.herokuapp.com/api/orders/" + id, {
+        ...order,
+        electronics: order.electronics.map((e) => e._id === changedOrderElectronic._id ? changedOrderElectronic : e),
+        total: (order.total || 0) + electronic.Price
+      })
+      setOrder(newOrderUpdateQuantity);
+      setElectronicInOrder(changedOrderElectronic);
     }
   }
 
-  const handleAddToCard = (event) => {
-    event.target.click();
-    let orderId = id;
-    if (!orderId) {
-      createOrder();
-    } else {
-      updateOrder(orderId);
-    }
-  }
-    // console.log(electronic)
     return (
       <div className='card-div'>
         <img 
@@ -92,7 +94,7 @@ const ShopCard = (props) => {
         <div className='shop-card-title'>{electronic.Model}</div>
         <div className='shop-card-price'>${electronic.Price}</div>
         <div className='add-to-cart'>
-          <button onClick={handleAddToCard}>Add to cart</button>
+          <button onClick={updateOrder}>Add to cart</button>
         </div>
         </div>
     );

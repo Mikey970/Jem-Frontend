@@ -4,10 +4,10 @@
 
 .shopcards-div {
     background-color: white;
-    width: 75vw;
+    width: 85vw;
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    justify-content: start;
 }
 

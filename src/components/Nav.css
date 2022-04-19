@@ -15,7 +15,14 @@
     display: block;
     text-decoration: none;
     color: black;
-    margin: 5px 20px;
+    width: 100%;
+    margin: 5px 0;
+    text-align: center;
+}
+
+.drop-link:hover {
+    background-color: grey; 
+    color: white;
 }
 
 .btns-div {
