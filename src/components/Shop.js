@@ -12,8 +12,6 @@ const Shop = (props) => {
   let getElectronics = async () => {
     let { data } = await axios.get("https://jem-backend.herokuapp.com/api/electronics");
 
-    console.log(type)
-
     let filteredData = data.filter((electronic) => {
       if (!type) return true;
       return electronic.Type === type
@@ -60,49 +58,49 @@ const Shop = (props) => {
     let earbudsArray = []
     for (let i = 0; i < electronics.length; i++){
       if (electronics[i].Type === "Earbuds") {
-        console.log(window.location)
+        // console.log(window.location)
      }
     }
 
-  const location = useLocation()
-  console.log(location.pathname)
+  // const location = useLocation()
+  // console.log(location.pathname)
 
- useEffect(() => {
-    if (window.location.href === 'http://localhost:3000/shop/tvs') {
+//  useEffect(() => {
+//     if (window.location.href === 'http://localhost:3000/shop/tvs') {
      
-      //setElectronics(TVarray)
+//       //setElectronics(TVarray)
      
-    console.log(electronics)
-  }
+//     console.log(electronics)
+//   }
  
- });
+//  });
   
-  useEffect(() => {
-    if (window.location.href === 'http://localhost:3000/shop/consoles') {
+//   useEffect(() => {
+//     if (window.location.href === 'http://localhost:3000/shop/consoles') {
        
-      setElectronics(consoleArray)
+//       setElectronics(consoleArray)
      
-      console.log(electronics)
-    }
-    });
+//       console.log(electronics)
+//     }
+//     });
 
-  useEffect(() => {
-    if (window.location.href === 'http://localhost:3000/shop/laptops') {
+//   useEffect(() => {
+//     if (window.location.href === 'http://localhost:3000/shop/laptops') {
      
-        setElectronics(laptopArray)
-        console.log(electronics)
+//         setElectronics(laptopArray)
+//         console.log(electronics)
       
-    }
-  },[window.location.href]);
+//     }
+//   },[window.location.href]);
 
- useEffect(() => {
-  if (window.location.href === 'http://localhost:3000/shop/earbuds') {
+//  useEffect(() => {
+//   if (window.location.href === 'http://localhost:3000/shop/earbuds') {
 
- setElectronics(earbudsArray)
- console.log(electronics)
-}
+//  setElectronics(earbudsArray)
+//  console.log(electronics)
+// }
 
-},);
+// },);
  
   return (
       <div className='shop-div'>
