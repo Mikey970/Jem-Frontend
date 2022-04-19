@@ -17,11 +17,12 @@ You can contribute to our projec too! Go through the following steps to get your
 ## Installation 
 <ol>
   <li>Fork the project to your gitbub </li>
-<li>Download the Repo to your device</li>
+<li>Download the Repo to your device
 ```
 git clone https://github.com/Mikey970/Jem-Frontend.git
 ```
-  <li>Make sure to download any dependencies</li>
+  </li>
+  <li>Make sure to download any dependencies
 ```
 npm i 
-```
+  </li>
