@@ -111,7 +111,7 @@ const Shop = (props) => {
       <button className='pcs-btn'>PCs/Laptops</button>
       <button className='headphones-btn'>Headphones</button>
       </div>
-      <ShopCards electronics={electronics} order={order} setOrder={ setOrder } id={ id } setId={ setId }/>
+      <ShopCards electronics={electronics} type={type} setType={setType} order={order} setOrder={ setOrder } id={ id } setId={ setId }/>
       </div>
   )
 }
