@@ -11,7 +11,7 @@ const NaviBar = (props) => {
         <Nav className="me-auto">
         <NavLink href="/">Home</NavLink>
         <NavLink href="/cart">Cart</NavLink>
-        <NavDropdown title="Shop">
+        <NavDropdown  title="Shop">
         <Link className="drop-link" to="/shop/tv">TVs</Link>
         <Link className="drop-link" to="/shop/consoles">Consoles</Link>
         <Link className="drop-link" to="/shop/phones">Phones</Link>
