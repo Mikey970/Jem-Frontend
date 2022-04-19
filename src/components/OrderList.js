@@ -5,9 +5,6 @@ import { useEffect, useState } from 'react';
 
 export default function OrderList(props) {
   const { electronics, order, setOrder, setElectronics, id, setId, electronicInOrder, setElectronicInOrder } = props;
-  let filtered = false;
-
-  const map = new Map();
 
   // useEffect(() => {
   //   if (electronics && electronics[0] && electronics[0].Quantity) {
@@ -34,21 +31,23 @@ export default function OrderList(props) {
   // console.log(filtered)
 
   const getOrders = async () => {
-    console.log(id, "id")
-    let { data } = await axios.get("https://jem-backend.herokuapp.com/api/orders/" + id)
-    console.log("innn", data)
-    electronics.map((e) => console.log(e, "fjhdjhhdjf"))
+    // console.log(id, "id")
+    let { data } = await axios.get("https://jem-backend.herokuapp.com/api/orders/" + (id || localStorage.getItem("orderId")))
+
+    setOrder(data)
+    setElectronics(order ? order.electronics : []);
+    // electronics.map((e) => console.log(e, "fjhdjhhdjf"))
   }
   
-  useEffect(() => { 
+  useEffect(() => {
     getOrders();
-  }, [])
+  })
   
-  const isEmpty = electronics ? electronics.length <= 0: true;
+  const isEmpty = order.electronics ? order.electronics.length <= 0: true;
 
   return !isEmpty ? (
     <div className="order-list">
-      {electronics.map((electronic, index) => <CheckoutCard electronicInOrder = {electronicInOrder} setElectronicInOrder = {setElectronicInOrder} electronic={electronic} setElectronics={setElectronics} order={order} setOrder={setOrder} setId={ setId } id={ id } key={ index }/>)}
+      {order.electronics.map((electronic, index) => <CheckoutCard setElectronicInOrder = {setElectronicInOrder} electronicInOrder={electronic} setElectronics={setElectronics} order={order} setOrder={setOrder} setId={ setId } id={ id } key={ index }/>)}
     </div>
   ) : (<div className='order-list empty-cart'>
       <h3>NOTHING IS IN YOUR CART</h3>
