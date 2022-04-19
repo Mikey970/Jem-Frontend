@@ -52,3 +52,4 @@ Push to Branch
 ```
 git push <remote> <branch>
 ```
+Now you just make a pull request and wait for our team to review! Happy Coding!
