@@ -15,14 +15,12 @@ JEM is an online shop where customers can order the latest electronics
 You can contribute to our projec too! Go through the following steps to get yourself started
 
 ## Installation 
-<ol>
-  <li>Fork the project to your gitbub </li>
-<li>Download the Repo to your device
+Fork the project to your gitbub 
+Download the Repo to your device
 ```
 git clone https://github.com/Mikey970/Jem-Frontend.git
 ```
-  </li>
-  <li>Make sure to download any dependencies
+Make sure to download any dependencies
 ```
 npm i 
-  </li>
+
