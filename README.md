@@ -11,13 +11,17 @@ JEM is an online shop where customers can order the latest electronics
   <li>React.js Bootstrap</li>
 </ul>
 
-## Getting Started
+## Help Contribute 
 You can contribute to our projec too! Go through the following steps to get yourself started
 
 ## Installation 
-
-Download the Repo to your device
+<ol>
+  <li>Fork the project to your gitbub </li>
+<li>Download the Repo to your device</li>
 ```
 git clone https://github.com/Mikey970/Jem-Frontend.git
 ```
- 
+  <li>Make sure to download any dependencies</li>
+```
+npm i 
+```
