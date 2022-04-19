@@ -70,7 +70,7 @@ const ShopCard = (props) => {
         total: (order.total || 0) + electronic.Price
       })
       setOrder(changedOrder);
-    } else {
+    } else { 
       console.log("in else")
       let { data: changedOrderElectronic } = await axios.put("https://jem-backend.herokuapp.com/api/orderElectronics/" + id + "/" + electronic._id, {
         ...data,
