@@ -9,6 +9,7 @@ const ShopCard = (props) => {
       electronics: [electronic],
       total: electronic.Price
     }
+    console.log("create")
     let { data } = await axios.post("https://jem-backend.herokuapp.com/api/orders", newOrder)
     let { _id } = data;
     localStorage.setItem("orderId", _id);
@@ -28,9 +29,42 @@ const ShopCard = (props) => {
     getOrder(id)
   }, [])
 
-  const updateOrder = async (id) => {
+  const updateOrder = async (id) => { // incorperate orderElectronics
     getOrder(id);
     if (order) {
+      let orderElectronic =
+        await axios.get(
+          `https://jem-backend.herokuapp.com/api/orderElectronics/${order._id}/${electronic._id}`
+        )
+      let orderElectronicData = orderElectronic.data;
+      if (!orderElectronicData) {
+        let newOrderElectronic = await axios.post(
+          `https://jem-backend.herokuapp.com/api/orderElectronics/`, {
+          orderId: order._id,
+          electronicId: electronic._id,
+          quantity: 1
+        })
+        await axios.put(`https://jem-backend.herokuapp.com/api/orders/${order._id}`, {
+          ...order,
+          electronics: [newOrderElectronic.data]
+        })
+      } else {
+        console.log("puttung")
+        let newOrderElectronic = await axios.put(
+          `https://jem-backend.herokuapp.com/api/orderElectronics/${order._id}/${electronic._id}`, {
+          ...orderElectronicData, quantity: (orderElectronicData.quantity || 0) + 1
+        })
+        let orderElectronicId = newOrderElectronic.data._id;
+        // await axios.put(
+        //   `https://jem-backend.herokuapp.com/api/orders/${order._id}`, {
+        //   ...orderElectronic, quantity: orderElectronic.quantity + 1
+        // })
+        console.log(newOrderElectronic, orderElectronicId, "putted")
+        // await axios.put(`https://jem-backend.herokuapp.com/api/orderElectronics/${order._id}`, {
+        //   ...order,
+        //   electronics: [newOrderElectronic]
+        // })
+      }
       let newOrder = { ...order, total: order.total + electronic.Price };
       console.log([...newOrder.electronics, electronic], "new elec")
       newOrder.electronics = [...newOrder.electronics, electronic];
@@ -49,7 +83,7 @@ const ShopCard = (props) => {
       updateOrder(orderId);
     }
   }
-    console.log(electronic)
+    // console.log(electronic)
     return (
       <div className='card-div'>
         <img 

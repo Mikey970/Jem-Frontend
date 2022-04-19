@@ -33,7 +33,7 @@ export default function OrderList(props) {
 
   // console.log(filtered)
   
-  const isEmpty = electronics.length <= 0;
+  const isEmpty = electronics ? electronics.length <= 0: true;
 
   return !isEmpty ? (
     <div className="order-list">
