@@ -27,7 +27,6 @@ export default function CheckoutCard(props) {
       setElectronics(data.electronics);
     }
     console.log(filteredElectronics)
-    
   }
   const deleteOrder = async () => {
     await axios.delete(`https://jem-backend.herokuapp.com/api/orders/${order._id}`);
@@ -43,19 +42,22 @@ export default function CheckoutCard(props) {
       deleteOrder();
     }
   }
+
+  const { Brand, Model, Image, Price, Quantity } = electronic;
   
   return inArray ? (
     <div className="checkout-card">
       <div className='checkout-card-image'>
-        image
+        <img src={ Image } width="75" height="75"/>
       </div>
       <div className="checkout-card-non-image">
-        <div>
-          <div>Title</div>
-          <div>Price</div>
+        <div className='checkout-card-non-image-div'>
+          <div>{Brand}</div>
+          <div>{Model}</div>
+          <div>{Price + "$"}</div>
         </div>
-        <div className='quantity-container'>
-          <div>Quantity</div>
+        <div className='checkout-card-non-image-div quantity-container'>
+          <div>Quantity: { Quantity || 1 }</div>
           <div className='incro-decro-buttons'>
             <button onClick={increment} className='plus'>+</button>
             <button onClick={decrement} className='minus'>-</button>

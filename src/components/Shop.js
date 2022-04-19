@@ -12,7 +12,10 @@ const Shop = (props) => {
   let getElectronics = async () => {
     let { data } = await axios.get("https://jem-backend.herokuapp.com/api/electronics");
 
+    console.log(type)
+
     let filteredData = data.filter((electronic) => {
+      if (!type) return true;
       return electronic.Type === type
     })
 
