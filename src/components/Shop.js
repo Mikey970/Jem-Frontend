@@ -71,7 +71,7 @@ const Shop = (props) => {
       <button className='pcs-sb'>PCs/Laptops</button>
       <button className='headphones-sb'>Headphones</button>
       </div>
-      <ShopCards electronics={electronics} type={type} setType={setType} order={order} setOrder={ setOrder } id={ id } setId={ setId }/>
+      <ShopCards electronicInOrder={ electronicInOrder } setElectronicInOrder={ setElectronicInOrder } electronics={electronics} type={type} setType={setType} order={order} setOrder={ setOrder } id={ id } setId={ setId }/>
       </div>
   )
 }
