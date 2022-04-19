@@ -31,7 +31,7 @@ const Shop = (props) => {
     }
     getOrder()
     getElectronics();
-  }, []);
+  }, [type]);
   
   let TVarray = [];
   for (let i = 0; i < electronics.length; i++){
@@ -65,7 +65,7 @@ const Shop = (props) => {
   return (
       <div className='shop-div'>
       <div className='sidebar-div'>
-      <button className='tv-sb'>TVs</button>
+      <button name="TV" className='tv-sb TV'>TVs</button>
       <button className='consoles-sb'>Consoles</button>
       <button className='phones-sb'>Phones</button>
       <button className='pcs-sb'>PCs/Laptops</button>
