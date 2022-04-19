@@ -36,4 +36,13 @@
     opacity: 0;
 }
 
+.card-div:active {
+    background-color: grey;
+    transition: .05s ease;
+}
+
+
+
+
+
 
