@@ -9,8 +9,8 @@ const NaviBar = (props) => {
     return (
         <Navbar expand='sm' sticky="top" variant="dark">
         <Nav className="me-auto">
-        <NavLink href="/">Home</NavLink>
-        <NavLink href="/cart">Cart</NavLink>
+        <Link className="nav-link" to="/">Home</Link>
+        <Link className="nav-link" to="/cart">Cart</Link>
         <NavDropdown  title="Shop">
         <Link className="drop-link" to="/shop/tv">TVs</Link>
         <Link className="drop-link" to="/shop/consoles">Consoles</Link>
