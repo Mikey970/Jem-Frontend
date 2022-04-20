@@ -22,7 +22,7 @@ function Home(props) {
         .then(data => console.log(data))
     }, [])
 
-    return (<div className='home-div'>
+    return (<div data-testid="home" className='home-div'>
         <Row />
         <Row2 setType={ setType }/>
         <Row3 />

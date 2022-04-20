@@ -21,6 +21,7 @@ function App() {
   return (
     <div className="App">
       <Nav />
+      
       <Routes>
         <Route path="/" element={<Home setType={ setType } electronicInOrder = {electronicInOrder} setElectronicInOrder = {setElectronicInOrder}/>}/>
         <Route path="/cart" element={<Cart id={ id } setId={ setId } electronicInOrder = {electronicInOrder} setElectronicInOrder = {setElectronicInOrder}/>} />
