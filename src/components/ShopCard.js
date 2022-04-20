@@ -26,9 +26,11 @@ const ShopCard = (props) => {
 
 
   const createOrder = async () => {
-    let { data } = axios.post("https://jem-backend.herokuapp.com/api/orders/", {
-      electronics: []
+    let { data } = await axios.post("https://jem-backend.herokuapp.com/api/orders/", {
+      electronics: [],
+      total: 0
     })
+    console.log(data, "data")
     if (!id) {
       setId(data._id);
       setOrder(data);
@@ -52,25 +54,34 @@ const ShopCard = (props) => {
   }, [])
 
   const updateOrder = async () => {
+    console.log('in update', order)
     if (!order) createOrder();
     // you have orders and electronics
     let { data } =
       await axios.get("https://jem-backend.herokuapp.com/api/orderElectronics/" + id + "/" + electronic._id);
-    setElectronicInOrder(data)
     if (!order) return;
-    let foundNode = order.electronics.find((e) => data._id === e._id);
+    let foundNode = order.electronics.filter((e) => e).find((e) => data._id === e._id);
     if (!foundNode) {
+      console.log("in if")
+      console.log([...order.electronics, data].filter((e) => e))
       let { data: changedOrder} = await axios.put("https://jem-backend.herokuapp.com/api/orders/" + id, {
         ...order,
-        electronics: [...order.electronics, electronicInOrder]
+        electronics: [...order.electronics, {...data, quantity: (data.quantity || 0) + 1}].filter((e) => e),
+        total: (order.total || 0) + electronic.Price
       })
-
       setOrder(changedOrder);
-    } else {
+    } else { 
+      console.log("in else")
       let { data: changedOrderElectronic } = await axios.put("https://jem-backend.herokuapp.com/api/orderElectronics/" + id + "/" + electronic._id, {
-        ...electronicInOrder,
-        quantity: electronicInOrder.quantity + 1
+        ...data,
+        quantity: data.quantity + 1
       })
+      const { data: newOrderUpdateQuantity } = await axios.put("https://jem-backend.herokuapp.com/api/orders/" + id, {
+        ...order,
+        electronics: order.electronics.map((e) => e._id === changedOrderElectronic._id ? changedOrderElectronic : e),
+        total: (order.total || 0) + electronic.Price
+      })
+      setOrder(newOrderUpdateQuantity);
       setElectronicInOrder(changedOrderElectronic);
     }
   }

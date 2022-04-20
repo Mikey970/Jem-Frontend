@@ -36,11 +36,13 @@
     opacity: 0;
 }
 
+.card-div:active {
+    background-color: grey;
+    transition: .05s ease;
+}
 
 
-.shop-card-title {
-  height: 10%;
-}
-.shop-card-price {
-  height: 20%;
-}
+
+
+
+
